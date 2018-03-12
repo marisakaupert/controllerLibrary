@@ -184,7 +184,8 @@ class CurveControllerLibraryUI(QtWidgets.QMainWindow):
         self.centralWidget().setLayout(self.gridLayout)
         self.initUiState()
         self.show()
-        
+        self.setFixedSize(self.size())
+
     def initUiState(self):
         """ Sets up the initial state of UI
         """
