@@ -53,42 +53,42 @@ class CurveControllerLibraryUI(QtWidgets.QMainWindow):
 
         # index color mapping to rgb for Q pix map
         self.colorMapDictionary = {
-        0:None,
-        1:(0,0,0),
-        2:(64,64,64),
-        3:(128,128,128),
-        4:(155,0,40),
-        5:(0,4,96),
-        6:(0,0,255),
-        7:(0,75,25),
-        8:(38,0,67),
-        9:(200,0,200),
-        10:(138,72,51),
-        11:(63,35,31),
-        12:(153,38,0),
-        13:(255,0,0),
-        14:(0,255,0),
-        15:(0,65,153),
-        16:(255,255,255),
-        17:(255,255,0),
-        18:(100,220,255),
-        19:(67,255,163),
-        20:(255,176,176),
-        21:(228,172,121),
-        22:(255,255,99),
-        23:(0,153,84),
-        24:(165,108,49),
-        25:(158,160,48),
-        26:(104,160,48),
-        27:(48,161,94),
-        28:(48,162,162),
-        29:(48,102,160),
-        30:(112,48,162),
-        31:(162,48,106)
+            0:  None,
+            1: (0, 0, 0),
+            2: (64, 64, 64),
+            3: (128, 128, 128),
+            4: (155, 0, 40),
+            5: (0, 4, 96),
+            6: (0, 0, 255),
+            7: (0, 75, 25),
+            8: (38, 0, 67),
+            9: (200, 0, 200),
+            10: (138, 72, 51),
+            11: (63, 35, 31),
+            12: (153, 38, 0),
+            13: (255, 0, 0),
+            14: (0, 255, 0),
+            15: (0, 65, 153),
+            16: (255, 255, 255),
+            17: (255, 255, 0),
+            18: (100, 220, 255),
+            19: (67, 255, 163),
+            20: (255, 176, 176),
+            21: (228, 172, 121),
+            22: (255, 255, 99),
+            23: (0, 153, 84),
+            24: (165, 108, 49),
+            25: (158, 160, 48),
+            26: (104, 160, 48),
+            27: (48, 161, 94),
+            28: (48, 162, 162),
+            29: (48, 102, 160),
+            30: (112, 48, 162),
+            31: (162, 48, 106)
         }
 
         # top most layout
-        self.setCentralWidget(QtWidgets.QWidget(self))        
+        self.setCentralWidget(QtWidgets.QWidget(self))
         self.gridLayout = QtWidgets.QGridLayout()
         
         self.verticalLayout = QtWidgets.QVBoxLayout()
@@ -172,6 +172,10 @@ class CurveControllerLibraryUI(QtWidgets.QMainWindow):
         # list widget
         self.conListWidget = QtWidgets.QListWidget()
         self.verticalLayout.addWidget(self.conListWidget)
+
+        # change color button
+        self.changeColorButton = QtWidgets.QPushButton("Change Color of Selected Controller")
+        self.verticalLayout.addWidget(self.changeColorButton)
 
         self.gridLayout.addLayout(self.verticalLayout, 1, 0, 1, 1)
 
