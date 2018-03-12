@@ -174,9 +174,16 @@ class CurveControllerLibraryUI(QtWidgets.QMainWindow):
         self.horizontalLayout.addWidget(self.scaleSlider)
         self.verticalLayout.addLayout(self.horizontalLayout)
 
+        # tabs
+        self.tabs = QtWidgets.QTabWidget()
+        self.library = QtWidgets.QWidget()
+        self.tabs.addTab(self.library, "Default")
+        self.customLibrary = QtWidgets.QWidget()
+        self.tabs.addTab(self.customLibrary, "Custom")
+
         # list widget
-        self.conListWidget = QtWidgets.QListWidget()
-        self.verticalLayout.addWidget(self.conListWidget)
+        self.conListWidget = QtWidgets.QListWidget(self.customLibrary)
+        self.verticalLayout.addWidget(self.tabs)
 
         # change color button
         self.changeColorButton = QtWidgets.QPushButton(
@@ -190,7 +197,7 @@ class CurveControllerLibraryUI(QtWidgets.QMainWindow):
         self.centralWidget().setLayout(self.gridLayout)
         self.initUiState()
         self.show()
-        self.setFixedSize(self.size())
+        # self.setFixedSize(self.size())
 
     def initUiState(self):
         """ Sets up the initial state of UI
