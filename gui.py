@@ -176,13 +176,14 @@ class CurveControllerLibraryUI(QtWidgets.QMainWindow):
 
         # tabs
         self.tabs = QtWidgets.QTabWidget()
-        self.library = QtWidgets.QWidget()
-        self.tabs.addTab(self.library, "Default")
+        self.defaultLibrary = QtWidgets.QWidget()
+        self.tabs.addTab(self.defaultLibrary, "Default")
         self.customLibrary = QtWidgets.QWidget()
         self.tabs.addTab(self.customLibrary, "Custom")
 
         # list widget
-        self.conListWidget = QtWidgets.QListWidget(self.customLibrary)
+        self.customListWidget = QtWidgets.QListWidget(self.customLibrary)
+        self.defaultListWidget = QtWidgets.QListWidget(self.defaultLibrary)
         self.verticalLayout.addWidget(self.tabs)
 
         # change color button
@@ -210,8 +211,8 @@ class CurveControllerLibraryUI(QtWidgets.QMainWindow):
         """ Connect events in UI
         """
 
-        self.conListWidget.itemDoubleClicked.connect(self.doubleClickedItem)
-        self.conListWidget.itemClicked.connect(self.singleClickedItem)
+        self.customListWidget.itemDoubleClicked.connect(self.doubleClickedItem)
+        self.customListWidget.itemClicked.connect(self.singleClickedItem)
         self.scaleSlider.valueChanged[int].connect(self.sliderEvent)
         self.scaleValLineEdit.editingFinished.connect(
             self.manualScaleEnteredEvent)
@@ -225,11 +226,11 @@ class CurveControllerLibraryUI(QtWidgets.QMainWindow):
         conList = conGenAPI.consList()
 
         # emptying the list widget
-        self.conListWidget.clear()
+        self.customListWidget.clear()
 
         for con in conList:
             item = QtWidgets.QListWidgetItem(con)
-            self.conListWidget.addItem(item)
+            self.customListWidget.addItem(item)
 
     def doubleClickedItem(self):
         """ When an item is double clicked
