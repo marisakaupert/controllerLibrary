@@ -7,7 +7,7 @@ from shiboken2 import wrapInstance
 import pymel.core as pm
 import maya.OpenMayaUI as omui
 
-import conGenSimplified as conGenAPI
+import conGenAPI
 reload(conGenAPI)
 
 _logger = logging.getLogger(__name__)
