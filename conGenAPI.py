@@ -12,10 +12,8 @@ except:
 _logger = logging.getLogger(__name__)
 _logger.setLevel(logging.DEBUG)
 
-
 # path to default pickle file
 defaultLibraryPath = os.path.join(os.path.dirname(__file__), 'consPickle.pkl')
-
 
 # if exists, need to reload it everytime
 try:
@@ -27,13 +25,11 @@ except:
         defaultLibraryPath))
     consDictionary = {}
 
-
 def consList():
     """ returns a list of available controllers
     """
 
     return sorted(consDictionary.keys())
-
 
 def saveCon(con=None, conName=None, debug=False):
     """ saves selected nurbs curve to te pickle file
@@ -86,7 +82,7 @@ def generateCon(conName=None, scale=1.0, color=6):
     """
 
     if not conName:
-        _logger.warn("No Controller Name Provided. Ex: conName = 'diamond' ")
+        _logger.warn("No Controller Name Provided. Ex: conName = 'diamond'")
         return
 
     conToCreate = consDictionary.get(conName, None)
