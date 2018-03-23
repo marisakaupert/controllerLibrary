@@ -25,11 +25,13 @@ except:
         defaultLibraryPath))
     consDictionary = {}
 
+
 def consList():
     """ returns a list of available controllers
     """
 
     return sorted(consDictionary.keys())
+
 
 def saveCon(con=None, conName=None, debug=False):
     """ saves selected nurbs curve to te pickle file
