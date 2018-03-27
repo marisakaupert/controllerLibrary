@@ -209,6 +209,7 @@ class CurveControllerLibraryUI(QtWidgets.QMainWindow):
         self.scaleValLineEdit.editingFinished.connect(
             self.manualScaleEnteredEvent)
         self.saveConbutton.clicked.connect(self.saveControllerEvent)
+        self.changeColorButton.clicked.connect(self.changeColor)
 
     def updateListWidget(self):
         """ Updates the list widget
@@ -269,22 +270,21 @@ class CurveControllerLibraryUI(QtWidgets.QMainWindow):
         """
 
         sel = pm.selected()
-        if sel and len(sel) == 1:
 
+        if sel and len(sel) == 1:
             try:
                 crvShape = sel[0].getShape()
                 if not crvShape.nodeType == 'nurbsCurve':
                     _logger.error("Selected is not a curve")
                 else:
                     _logger.debug("selected a curve")
-
             except:
                 _logger.error("error placeholder")
-
         else:
             _logger.debug("do you have something selected?")
 
         curveName = self.conNameLineEdit.text()
+
         if not curveName:
             _logger.error("No valid name entered")
 
@@ -302,3 +302,18 @@ class CurveControllerLibraryUI(QtWidgets.QMainWindow):
 
         curItem = theListWidget.currentItem()
         curItemText = curItem.text()
+
+    def changeColor(self):
+        """ Changes the color of the controller selected
+        """
+
+        selectedCon = pm.selected()
+
+        if selectedCon and len(selectedCon) == 1 and self.buttonGroup.checkedButton():
+            currentButton = self.buttonGroup.checkedButton()
+            color = int(currentButton.text())
+            pm.setAttr(selectedCon[0] + '.overrideEnabled', 1)
+            pm.setAttr(selectedCon[0] +'.overrideColor', color)
+            _logger.debug("Changing color to {0}".format(color))
+        else:
+            _logger.error("Curve or color not selected.")
