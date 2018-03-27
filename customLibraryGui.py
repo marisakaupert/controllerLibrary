@@ -217,6 +217,7 @@ class CurveControllerLibraryUI(QtWidgets.QMainWindow):
         self.scaleValLineEdit.editingFinished.connect(
             self.manualScaleEnteredEvent)
         self.saveConbutton.clicked.connect(self.saveControllerEvent)
+        self.changeColorButton.clicked.connect(self.changeColor)
 
     def updateListWidget(self):
         """ Updates the list widget
@@ -310,3 +311,18 @@ class CurveControllerLibraryUI(QtWidgets.QMainWindow):
 
         curItem = theListWidget.currentItem()
         curItemText = curItem.text()
+
+    def changeColor(self):
+        """ Changes the color of the controller selected
+        """
+
+        selectedCon = pm.selected()
+
+        if selectedCon and len(selectedCon) == 1 and self.buttonGroup.checkedButton():
+            currentButton = self.buttonGroup.checkedButton()
+            color = int(currentButton.text())
+            pm.setAttr(selectedCon[0] + '.overrideEnabled', 1)
+            pm.setAttr(selectedCon[0] +'.overrideColor', color)
+            _logger.debug("Changing color to {0}".format(color))
+        else:
+            _logger.error("Curve or color not selected.")
