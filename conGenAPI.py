@@ -107,7 +107,7 @@ def generateCon(conName=None, scale=1.0, color=6):
     pm.makeIdentity(crv, apply=True, t=0, r=0, s=1, n=0)
 
     # set color
-    crv.getShape().overrideEnabled.set(1)
-    crv.getShape().overrideColor.set(color)
+    crv.overrideEnabled.set(1)
+    crv.overrideColor.set(color)
 
     return crv
