@@ -204,7 +204,7 @@ class CurveControllerLibraryUI(QtWidgets.QMainWindow):
         """ Sets up the initial state of UI
         """
 
-        self.updateListWidget()
+        self.updateDefaultListWidget()
         self.scaleSlider.setValue(self.scaleValue)
 
     def makeConnections(self):
@@ -219,19 +219,19 @@ class CurveControllerLibraryUI(QtWidgets.QMainWindow):
         self.saveConbutton.clicked.connect(self.saveControllerEvent)
         self.changeColorButton.clicked.connect(self.changeColor)
 
-    def updateListWidget(self):
+    def updateDefaultListWidget(self):
         """ Updates the list widget
         """
 
         # returns sorted list
-        conList = conGenAPI.consList()
+        conList = conGenAPI.defaultConsLibrary()
 
         # emptying the list widget
-        self.customListWidget.clear()
+        self.defaultListWidget.clear()
 
         for con in conList:
             item = QtWidgets.QListWidgetItem(con)
-            self.customListWidget.addItem(item)
+            self.defaultListWidget.addItem(item)
 
     def doubleClickedItem(self):
         """ When an item is double clicked
