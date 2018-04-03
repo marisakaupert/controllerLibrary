@@ -13,7 +13,7 @@ _logger = logging.getLogger(__name__)
 _logger.setLevel(logging.DEBUG)
 
 # path to default pickle file
-defaultLibraryPath = os.path.join(os.path.dirname(__file__), 'consPickle.pkl')
+defaultLibraryPath = os.path.join(os.path.dirname(__file__), 'library.pkl')
 
 # if exists, need to reload it everytime
 try:
@@ -24,6 +24,12 @@ except:
     _logger.warn("No Existing Library of Controls : {0}".format(
         defaultLibraryPath))
     consDictionary = {}
+
+def defaultConsLibrary():
+    """ returns a list of available controllers
+    """
+
+    return sorted(consDictionary.keys())
 
 
 def consList():
