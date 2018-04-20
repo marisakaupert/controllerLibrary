@@ -16,6 +16,8 @@ _logger.setLevel(logging.DEBUG)
 defaultLibraryPath = os.path.join(os.path.dirname(__file__), 'library.pkl')
 
 # if exists, need to reload it everytime
+
+# TESTING FOR GIT
 try:
     consDictionary = pickle.load(open(defaultLibraryPath, 'rb'))
     tempDictionaryString = json.dumps(consDictionary, indent=4)
